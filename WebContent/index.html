@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Movie Recommender</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" >
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+     <link rel="stylesheet" href="StyleSheet/logos.css">
+     <link rel="stylesheet" href="StyleSheet/font-awesome.min.css">
+     <link rel="stylesheet" href="StyleSheet/font-awesome.css">
+     <script src="https://kit.fontawesome.com/a4d3cc3c83.js" ></script>
+     <script src="./scripts/show-movies.js" type="text/javascript"></script>
+     <script src="./scripts/search-film.js" type="text/javascript"></script>
+	 <script src="./scripts/rate-film.js" type="text/javascript"></script>
+	 <script src="./scripts/user.js" type="text/javascript"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>  
+</head>
+<body>
+
+<div class="jumbotron p-3 p-md-5 text-white rounded bg-dark">
+  <h1 class="display-4">Movie Recommender  <i class="fas fa-film"></i></h1>
+  <hr class="my-4">
+ 
+</div>
+
+<div id="intro" class="intro">
+<h1>Welcome To The Movie Recommender</h1><br>
+<h2>Here's how to use the website...</h2><br>
+<h3>Step 1:</h3><p>Choose one or more of your favourite genres</p><br>
+<h3>Step 2:</h3><p>Rate at least 5 movies</p><br>
+<h3>Step 3:</h3><p>Click refresh for more movies we think you may like</p><br>
+<h3>Step 4:</h3><p>Repeat step 2 and 3 until you find the perfect movie to watch!</p><br>
+<a class="btn btn-primary btn-lg" data-dismiss="modal"  onclick='showGenres()'  role="button">Go</a>
+
+</div>
+
+
+<div id ="chooseGenres">
+    <div class="grid-container-genre" id="grid-container-genre">
+    
+     
+     <div class="grid-item">Action
+     <label class="container">
+     <img id="actionImage" src="images/action(1).png" width=150px height=150px   > 
+  <input type="checkbox" value="off"  name="action" id="action" onclick="toggleImage('action')" >
+</label>
+</div>
+     <div class="grid-item">Adventure
+     <label class="container">
+     <img id="adventureImage"  src="images/adventure(1).png" width=150px height=150px > 
+  <input type="checkbox" value="off" name="adventure" id="adventure" onclick="toggleImage('adventure')">
+</label>
+     </div>  
+<div class="grid-item">Animation<label class="container">
+<img id="animationImage"  src="images/animation(1).png" width=150px height=150px > 
+  <input type="checkbox" value="off"  name="animation" id="animation" onclick="toggleImage('animation')">
+</label>
+</div>
+<div class="grid-item">Children<label class="container">
+<img id="childrenImage"  src="images/children(1).png" width=150px height=150px > 
+  <input type="checkbox" value="off" name="children" id="children" onclick="toggleImage('children')">
+</label>
+</div>
+<div class="grid-item">Comedy<label class="container">
+<img id="comedyImage"  src="images/comedy(1).png" width=150px height=150px > 
+  <input type="checkbox" value="off" name="comedy" id="comedy" onclick="toggleImage('comedy')">
+</label>
+</div>
+<div class="grid-item">Crime<label class="container">
+<img id="crimeImage"  src="images/crime(1).png" width=150px height=150px > 
+  <input type="checkbox" value="off"  name="crime" id="crime" onclick="toggleImage('crime')">
+</label>
+</div>
+<div class="grid-item">Drama<label class="container">
+<img id="dramaImage"  src="images/drama(1).png" width=150px height=150px > 
+  <input type="checkbox" value="off" name="drama" id="drama" onclick="toggleImage('drama')">
+</label>
+</div>
+<div class="grid-item">Documentary<label class="container">
+<img id="documentaryImage"  src="images/documentary(1).png"width=150px height=150px > 
+  <input type="checkbox" value="off" name="documentary" id="documentary" onclick="toggleImage('documentary')">
+</label>
+</div>
+<div class="grid-item">Fantasy<label class="container">
+<img id="fantasyImage"  src="images/fantasy(1).png" width=150px height=150px > 
+  <input type="checkbox" value="off" name="fantasy" id="fantasy" onclick="toggleImage('fantasy')">
+</label>
+</div>
+<div class="grid-item">Film-Noir<label class="container">
+<img id="film-noirImage"  src="images/film-noir(1).png" width=150px height=150px > 
+  <input type="checkbox" value="off"  name="film_noir" id="film-noir" onclick="toggleImage('film-noir')">
+</label>
+</div>
+<div class="grid-item">Horror<label class="container">
+<img id="horrorImage"  src="images/horror(1).png" width=150px height=150px > 
+  <input type="checkbox" value="off"  name="horror" id="horror" onclick="toggleImage('horror')">
+</label></div>
+     <div class="grid-item">Musical
+     <label class="container">
+     <img id="musicalImage"  src="images/musical(1).png" width=150px height=150px > 
+  <input type="checkbox" value="off"  name="musical" id="musical" onclick="toggleImage('musical')">
+</label>
+     </div>  
+<div class="grid-item">Mystery<label class="container">
+<img id="mysteryImage" src="images/mystery(1).png" width=150px height=150px > 
+  <input type="checkbox" value="off"  name="mystery" id="mystery" onclick="toggleImage('mystery')">
+</label>
+</div>
+
+<div class="grid-item">Romance<label class="container">
+<img id="romanceImage"  src="images/romance(1).png" width=150px height=150px > 
+  <input type="checkbox" value="off" name="romance" id="romance" onclick="toggleImage('romance')">
+</label>
+</div>
+<div class="grid-item">Sci-Fi<label class="container">
+<img id="sci-fiImage"  src="images/sci-fi(1).png" width=150px height=150px > 
+  <input type="checkbox" value="off" name="sci_fi" id="sci-fi" onclick="toggleImage('sci-fi')">
+</label>
+</div>
+<div class="grid-item">  Thriller<label class="container">
+<img id="thrillerImage"  src="images/thriller(1).png" width=150px height=150px  > 
+  <input type="checkbox" value="off"  name="thriller" id="thriller" onclick="toggleImage('thriller')">
+</label>
+</div>
+<div class="grid-item">  Wars<label class="container">
+<img id="warImage"  src="images/war(1).png" width=150px height=150px > 
+  <input type="checkbox" value="off" name="wars" id="war" onclick="toggleImage('war')">
+</label>
+</div>
+<div class="grid-item">  Western<label class="container">
+<img id="westernImage"  src="images/western(1).png" width=150px height=150px > 
+  <input type="checkbox" value="off" name="western" id="western" onclick="toggleImage('western')">
+  </label>
+</div> <div id="message"></div>
+<a class="btn btn-primary btn-lg" data-dismiss="modal"  onclick='searchMovie("action", "adventure","animation","children", "crime" ,"comedy", "drama" , "documentary","fantasy","film-noir" ,"horror" ,"musical","mystery" , "romance","sci-fi" , "thriller" , "war" , "western" , "results")'  role="button">Go</a>
+</div>
+
+</div>
+<div class="loader" id="loader"><br><br><br></div>
+         
+     <div id="results"></div>
+     <div id="uID"></div>
+    
+
+<br><br>
+<div class="modal fade bd-example-modal-md" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-md"  role="document">
+    <div class="modal-content">
+     <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Attributions</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+<div class="modal-body">
+  <div class="container-fluid">
+   <div class="grid-container-img" id="grid-container-img">
+   <div class="row"> <div class="grid-item-img">
+     <img  src="images/action(1).png" width=75px height=75px   > 
+</div>
+<div class="grid-item-img">
+     <img  src="images/action.png" width=75px height=75px   > 
+</div><div class="grid-item-img"> <div><p>Icons made by <a href="https://www.flaticon.com/authors/photo3idea-studio" title="photo3idea_studio">photo3idea_studio</a></p> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div></div></div>
+</div>
+</div>
+<div class="grid-container-img" id="grid-container-img">
+   <div class="row"> <div class="grid-item-img">
+     <img  src="images/adventure(1).png" width=75px height=75px   > 
+</div>
+<div class="grid-item-img">
+     <img  src="images/adventure.png" width=75px height=75px   > 
+</div>
+<div class="grid-item-img"> <div><p>Icons made by <a href="" title="photo3idea_studio">photo3idea_studio</a></p> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> </div>
+</div></div>
+<div class="grid-container-img" id="grid-container-img">
+   <div class="row"> <div class="grid-item-img">
+     <img  src="images/animation(1).png" width=75px height=75px   > 
+</div>
+<div class="grid-item-img">
+     <img  src="images/animation.png" width=75px height=75px   > 
+</div>
+<div class="grid-item-img"> <div><p>Icons made by <a href="https://www.flaticon.com/authors/smalllikeart" title="smalllikeart">smalllikeart</a></p> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> </div>
+</div></div>
+<div class="grid-container-img" id="grid-container-img">
+   <div class="row"> <div class="grid-item-img">
+     <img  src="images/children(1).png" width=75px height=75px   > 
+</div>
+<div class="grid-item-img">
+     <img  src="images/children.png" width=75px height=75px   > 
+</div>
+<div class="grid-item-img"> <div><p>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a></p> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> </div>
+</div></div>
+<div class="grid-container-img" id="grid-container-img">
+   <div class="row"> <div class="grid-item-img">
+     <img  src="images/comedy(1).png" width=75px height=75px   > 
+</div>
+<div class="grid-item-img">
+     <img  src="images/comedy.png" width=75px height=75px   > 
+</div>
+<div class="grid-item-img"> <div><p>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a></p> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> </div>
+</div></div>
+<div class="grid-container-img" id="grid-container-img">
+   <div class="row"> <div class="grid-item-img">
+     <img  src="images/crime(1).png" width=75px height=75px   > 
+</div>
+<div class="grid-item-img">
+     <img  src="images/crime.png" width=75px height=75px   > 
+</div>
+<div class="grid-item-img">  <div><p>Icons made by <a href="https://www.flaticon.com/authors/eucalyp" title="Eucalyp">Eucalyp</a></p> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div></div>
+</div></div>
+<div class="grid-container-img" id="grid-container-img">
+   <div class="row"> <div class="grid-item-img">
+     <img  src="images/documentary(1).png" width=75px height=75px   > 
+</div>
+<div class="grid-item-img">
+     <img  src="images/documentary.png" width=75px height=75px   > 
+</div>
+<div class="grid-item-img"> <div><p>Icons made by <a href="https://www.flaticon.com/authors/mynamepong" title="mynamepong">mynamepong</a></p> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> </div>
+</div></div>
+<div class="grid-container-img" id="grid-container-img">
+   <div class="row"> <div class="grid-item-img">
+     <img  src="images/drama(1).png" width=75px height=75px   > 
+</div>
+<div class="grid-item-img">
+     <img  src="images/drama.png" width=75px height=75px   > 
+</div>
+<div class="grid-item-img"> <div><p>Icons made by <a href="https://www.flaticon.com/authors/monkik" title="monkik">monkik</a></p> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> </div>
+</div></div>
+<div class="grid-container-img" id="grid-container-img">
+   <div class="row"> <div class="grid-item-img">
+     <img  src="images/film-noir(1).png" width=75px height=75px   > 
+</div>
+<div class="grid-item-img">
+     <img  src="images/film-noir.png" width=75px height=75px   > 
+</div>
+<div class="grid-item-img"> <div><p>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a></p> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> </div>
+</div></div>
+<div class="grid-container-img" id="grid-container-img">
+   <div class="row"> <div class="grid-item-img">
+     <img  src="images/fantasy(1).png" width=75px height=75px   > 
+</div>
+<div class="grid-item-img">
+     <img  src="images/fantasy.png" width=75px height=75px   > 
+</div>
+<div class="grid-item-img"> <div><p>Icons made by <a href="https://www.flaticon.com/authors/icongeek26" title="Icongeek26">Icongeek26</a></p> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> </div>
+</div></div>
+<div class="grid-container-img" id="grid-container-img">
+   <div class="row"> <div class="grid-item-img">
+     <img  src="images/horror(1).png" width=75px height=75px   > 
+</div>
+<div class="grid-item-img">
+     <img  src="images/horror.png" width=75px height=75px   > 
+</div>
+<div class="grid-item-img"> <div><p>Icons made by <a href="https://www.flaticon.com/authors/eucalyp" title="Eucalyp">Eucalyp</a></p> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> </div>
+</div></div>
+<div class="grid-container-img" id="grid-container-img">
+   <div class="row"> <div class="grid-item-img">
+     <img  src="images/musical(1).png" width=75px height=75px   > 
+</div>
+<div class="grid-item-img">
+     <img  src="images/musical.png" width=75px height=75px   > 
+</div>
+<div class="grid-item-img"> <div><p>Icons made by <a href="" title="ultimatearm">ultimatearm</a></p> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> </div>
+</div></div>
+<div class="grid-container-img" id="grid-container-img">
+   <div class="row"> <div class="grid-item-img">
+     <img  src="images/mystery(1).png" width=75px height=75px   > 
+</div>
+<div class="grid-item-img">
+     <img  src="images/mystery.png" width=75px height=75px   > 
+</div>
+<div class="grid-item-img"> <div><p>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a></p> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> </div>
+</div></div>
+<div class="grid-container-img" id="grid-container-img">
+   <div class="row"> <div class="grid-item-img">
+     <img  src="images/romance(1).png" width=75px height=75px   > 
+</div>
+<div class="grid-item-img">
+     <img  src="images/romance.png" width=75px height=75px   > 
+</div>
+<div class="grid-item-img"> <div><p>Icons made by <a href="" title="photo3idea_studio">photo3idea_studio</a></p> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> </div>
+</div></div>
+<div class="grid-container-img" id="grid-container-img">
+   <div class="row"> <div class="grid-item-img">
+     <img  src="images/sci-fi(1).png" width=75px height=75px   > 
+</div>
+<div class="grid-item-img">
+     <img  src="images/sci-fi.png" width=75px height=75px   > 
+</div>
+<div class="grid-item-img"> <div><p>Icons made by <a href="" title="photo3idea_studio">photo3idea_studio</a></p> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> </div>
+</div></div>
+<div class="grid-container-img" id="grid-container-img">
+   <div class="row"> <div class="grid-item-img">
+     <img  src="images/thriller(1).png" width=75px height=75px   > 
+</div>
+<div class="grid-item-img">
+     <img  src="images/thriller.png" width=75px height=75px   > 
+</div>
+<div class="grid-item-img"> <div><p>Icons made by <a href="https://www.flaticon.com/authors/photo3idea-studio" title="photo3idea_studio">photo3idea_studio</a></p> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> </div>
+</div></div>
+<div class="grid-container-img" id="grid-container-img">
+   <div class="row"> <div class="grid-item-img">
+     <img  src="images/war(1).png" width=75px height=75px   > 
+</div>
+<div class="grid-item-img">
+     <img  src="images/war.png" width=75px height=75px   > 
+</div>
+<div class="grid-item-img"> <div><p>Icons made by <a href="https://creativemarket.com/eucalyp" title="Eucalyp">Eucalyp</a></p> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> </div></div>
+</div>
+<div class="grid-container-img" id="grid-container-img">
+   <div class="row"> <div class="grid-item-img">
+     <img  src="images/western(1).png" width=75px height=75px   > 
+</div>
+<div class="grid-item-img">
+     <img  src="images/western.png" width=75px height=75px   > 
+</div>
+<div class="grid-item-img"> 
+<p>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a></p> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> </div></div>
+</div>
+</div>
+</div>
+  </div>
+
+
+</body>
+<footer class="blog-footer">
+     
+      
+      <a type="button" data-toggle="modal" data-target=".bd-example-modal-md">Attributions</a>
+    </footer>  
+
+</html>
